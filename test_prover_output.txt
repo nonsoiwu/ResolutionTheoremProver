@@ -1,0 +1,235 @@
+==========
+=========================PROBLEM 1=========================
+=======DFS=======
+Premises:
+((aunt ?x ?y) ~(sister ?x ?z) ~(mother ?z ?y))
+((aunt ?x ?y) ~(sister ?x ?z) ~(father ?z ?y))
+((sister Mary Sue))
+((sister Mary Doug))
+((father Doug John))
+((mother Sue Paul))
+
+Goals:
+(~(aunt ?x ?y))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 8
+
+(~(aunt ?x ?y)):
+1:{?x/Mary, ?y/John}
+2:{?x/Mary, ?y/Paul}
+
+=======BFS=======
+Premises:
+((aunt ?x ?y) ~(sister ?x ?z) ~(mother ?z ?y))
+((aunt ?x ?y) ~(sister ?x ?z) ~(father ?z ?y))
+((sister Mary Sue))
+((sister Mary Doug))
+((father Doug John))
+((mother Sue Paul))
+
+Goals:
+(~(aunt ?x ?y))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 8
+
+(~(aunt ?x ?y)):
+1:{?x/Mary, ?y/Paul}
+2:{?x/Mary, ?y/John}
+
+=========================PROBLEM 2=========================
+=======DFS=======
+Premises:
+((simple_sentence ?x ?y ?z ?u ?v) ~(noun_phrase ?x ?y) ~(verb_phrase ?z ?u ?v))
+((noun_phrase ?x ?y) ~(article ?x) ~(noun ?y))
+((verb_phrase ?x ?y ?z) ~(verb ?x) ~(noun_phrase ?y ?z))
+((article a))
+((article the))
+((noun man))
+((noun dog))
+((verb likes))
+((verb bites))
+
+Goals:
+(~(simple_sentence ?x ?y ?z ?u ?v))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 43
+
+(~(simple_sentence ?x ?y ?z ?u ?v)):
+1:{?x/the, ?y/dog, ?z/bites, ?u/the, ?v/man}
+2:{?x/the, ?y/dog, ?z/bites, ?u/the, ?v/dog}
+3:{?x/the, ?y/dog, ?z/bites, ?u/a, ?v/man}
+4:{?x/the, ?y/dog, ?z/bites, ?u/a, ?v/dog}
+5:{?x/the, ?y/dog, ?z/likes, ?u/the, ?v/man}
+6:{?x/the, ?y/dog, ?z/likes, ?u/the, ?v/dog}
+7:{?x/the, ?y/dog, ?z/likes, ?u/a, ?v/man}
+8:{?x/the, ?y/dog, ?z/likes, ?u/a, ?v/dog}
+9:{?x/the, ?y/man, ?z/bites, ?u/the, ?v/man}
+10:{?x/the, ?y/man, ?z/bites, ?u/the, ?v/dog}
+11:{?x/the, ?y/man, ?z/bites, ?u/a, ?v/man}
+12:{?x/the, ?y/man, ?z/bites, ?u/a, ?v/dog}
+13:{?x/the, ?y/man, ?z/likes, ?u/the, ?v/man}
+14:{?x/the, ?y/man, ?z/likes, ?u/the, ?v/dog}
+15:{?x/the, ?y/man, ?z/likes, ?u/a, ?v/man}
+16:{?x/the, ?y/man, ?z/likes, ?u/a, ?v/dog}
+17:{?x/a, ?y/dog, ?z/bites, ?u/the, ?v/man}
+18:{?x/a, ?y/dog, ?z/bites, ?u/the, ?v/dog}
+19:{?x/a, ?y/dog, ?z/bites, ?u/a, ?v/man}
+20:{?x/a, ?y/dog, ?z/bites, ?u/a, ?v/dog}
+21:{?x/a, ?y/dog, ?z/likes, ?u/the, ?v/man}
+22:{?x/a, ?y/dog, ?z/likes, ?u/the, ?v/dog}
+23:{?x/a, ?y/dog, ?z/likes, ?u/a, ?v/man}
+24:{?x/a, ?y/dog, ?z/likes, ?u/a, ?v/dog}
+25:{?x/a, ?y/man, ?z/bites, ?u/the, ?v/man}
+26:{?x/a, ?y/man, ?z/bites, ?u/the, ?v/dog}
+27:{?x/a, ?y/man, ?z/bites, ?u/a, ?v/man}
+28:{?x/a, ?y/man, ?z/bites, ?u/a, ?v/dog}
+29:{?x/a, ?y/man, ?z/likes, ?u/the, ?v/man}
+30:{?x/a, ?y/man, ?z/likes, ?u/the, ?v/dog}
+31:{?x/a, ?y/man, ?z/likes, ?u/a, ?v/man}
+32:{?x/a, ?y/man, ?z/likes, ?u/a, ?v/dog}
+
+=======BFS=======
+Premises:
+((simple_sentence ?x ?y ?z ?u ?v) ~(noun_phrase ?x ?y) ~(verb_phrase ?z ?u ?v))
+((noun_phrase ?x ?y) ~(article ?x) ~(noun ?y))
+((verb_phrase ?x ?y ?z) ~(verb ?x) ~(noun_phrase ?y ?z))
+((article a))
+((article the))
+((noun man))
+((noun dog))
+((verb likes))
+((verb bites))
+
+Goals:
+(~(simple_sentence ?x ?y ?z ?u ?v))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 43
+
+(~(simple_sentence ?x ?y ?z ?u ?v)):
+1:{?x/a, ?y/man, ?z/likes, ?u/a, ?v/man}
+2:{?x/a, ?y/man, ?z/likes, ?u/a, ?v/dog}
+3:{?x/a, ?y/man, ?z/likes, ?u/the, ?v/man}
+4:{?x/a, ?y/man, ?z/likes, ?u/the, ?v/dog}
+5:{?x/a, ?y/man, ?z/bites, ?u/a, ?v/man}
+6:{?x/a, ?y/man, ?z/bites, ?u/a, ?v/dog}
+7:{?x/a, ?y/man, ?z/bites, ?u/the, ?v/man}
+8:{?x/a, ?y/man, ?z/bites, ?u/the, ?v/dog}
+9:{?x/a, ?y/dog, ?z/likes, ?u/a, ?v/man}
+10:{?x/a, ?y/dog, ?z/likes, ?u/a, ?v/dog}
+11:{?x/a, ?y/dog, ?z/likes, ?u/the, ?v/man}
+12:{?x/a, ?y/dog, ?z/likes, ?u/the, ?v/dog}
+13:{?x/a, ?y/dog, ?z/bites, ?u/a, ?v/man}
+14:{?x/a, ?y/dog, ?z/bites, ?u/a, ?v/dog}
+15:{?x/a, ?y/dog, ?z/bites, ?u/the, ?v/man}
+16:{?x/a, ?y/dog, ?z/bites, ?u/the, ?v/dog}
+17:{?x/the, ?y/man, ?z/likes, ?u/a, ?v/man}
+18:{?x/the, ?y/man, ?z/likes, ?u/a, ?v/dog}
+19:{?x/the, ?y/man, ?z/likes, ?u/the, ?v/man}
+20:{?x/the, ?y/man, ?z/likes, ?u/the, ?v/dog}
+21:{?x/the, ?y/man, ?z/bites, ?u/a, ?v/man}
+22:{?x/the, ?y/man, ?z/bites, ?u/a, ?v/dog}
+23:{?x/the, ?y/man, ?z/bites, ?u/the, ?v/man}
+24:{?x/the, ?y/man, ?z/bites, ?u/the, ?v/dog}
+25:{?x/the, ?y/dog, ?z/likes, ?u/a, ?v/man}
+26:{?x/the, ?y/dog, ?z/likes, ?u/a, ?v/dog}
+27:{?x/the, ?y/dog, ?z/likes, ?u/the, ?v/man}
+28:{?x/the, ?y/dog, ?z/likes, ?u/the, ?v/dog}
+29:{?x/the, ?y/dog, ?z/bites, ?u/a, ?v/man}
+30:{?x/the, ?y/dog, ?z/bites, ?u/a, ?v/dog}
+31:{?x/the, ?y/dog, ?z/bites, ?u/the, ?v/man}
+32:{?x/the, ?y/dog, ?z/bites, ?u/the, ?v/dog}
+
+=========================PROBLEM 3=========================
+=======DFS=======
+Premises:
+((ancestor ?x ?y) ~(parent ?x ?y))
+((ancestor ?x ?y) ~(ancestor ?x ?z) ~(parent ?z ?y))
+((parent Mary Paul))
+((parent Sue Mary))
+
+Goals:
+(~(ancestor ?x ?y))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 14
+
+(~(ancestor ?x ?y)):
+1:{?x/Sue, ?y/Paul}
+2:{?x/Mary, ?y/Paul}
+3:{?x/Sue, ?y/Mary}
+
+=======BFS=======
+Premises:
+((ancestor ?x ?y) ~(parent ?x ?y))
+((ancestor ?x ?y) ~(ancestor ?x ?z) ~(parent ?z ?y))
+((parent Mary Paul))
+((parent Sue Mary))
+
+Goals:
+(~(ancestor ?x ?y))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 14
+
+(~(ancestor ?x ?y)):
+1:{?x/Mary, ?y/Paul}
+2:{?x/Sue, ?y/Mary}
+3:{?x/Sue, ?y/Paul}
+
+=========================PROBLEM 4=========================
+=======DFS=======
+Premises:
+((ancestor ?x ?y) ~(ancestor ?x ?z) ~(parent ?z ?y))
+((ancestor ?x ?y) ~(parent ?x ?y))
+((parent Mary Paul))
+((parent Sue Mary))
+
+Goals:
+(~(ancestor ?x ?y))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 14
+
+(~(ancestor ?x ?y)):
+1:{?x/Mary, ?y/Paul}
+2:{?x/Sue, ?y/Mary}
+3:{?x/Sue, ?y/Paul}
+
+=======BFS=======
+Premises:
+((aunt ?x ?y) ~(sister ?x ?z) ~(mother ?z ?y))
+((aunt ?x ?y) ~(sister ?x ?z) ~(father ?z ?y))
+((sister Mary Sue))
+((sister Mary Doug))
+((father Doug John))
+((mother Sue Paul))
+
+Goals:
+(~(aunt ?x ?y))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 8
+
+(~(aunt ?x ?y)):
+1:{?x/Mary, ?y/Paul}
+2:{?x/Mary, ?y/John}
