@@ -78,7 +78,7 @@ This line will run a Depth First Search on a ```Theorem``` class:
 ```
 th.prove()
 ``` 
-and print the output while also returning a list of bindings for resolution.\
+and print the output while also returning a list of bindings for resolution.
 
 In order to run a Breadth First Search, the ```searchType``` attribute of a ```Theroem``` class must be set to ```True```.\
 This line will run a Breadth First Search on a ```Theorem``` class:
