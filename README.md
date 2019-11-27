@@ -29,7 +29,7 @@ Axioms are horn clauses. This means that the axiom shown above entails:
 > (grandparent ?x ?y) => (parent ?x ?z) and (parent ?z ?y)
 
 which is equivalent to:
-> (grandparent ?x ?y) or ~(parent ?x ?z) ~(parent ?z ?y)
+> (grandparent ?x ?y) or ~(parent ?x ?z) or ~(parent ?z ?y)
 
 # How to use
 
@@ -63,7 +63,8 @@ ax1 = Axiom().setAttributes([pred1])
 ax2 = Axiom().setAttributes([pred2])
 ```
 where ```ax1``` will read:
-> ((pred1 ?name1 name2), (pred2 name2)), 
+> ((pred1 ?name1 name2), (pred2 name2))
+
 and ```ax2``` will read:
 > ((pred2 name2))
 
