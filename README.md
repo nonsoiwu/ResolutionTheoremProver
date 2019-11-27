@@ -12,22 +12,21 @@ These Axioms contain 0 or more Predicates.
 The Theorem attempts to derive the 'Ø' clause (clause with 0 predicates) by resolving each Axiom within its goals set against those in the premises set.
 
 Predicate examples:
-	(grandparent ?x ?y)
-	(parent ?x ?y)
-	(parent ?x Sue)
-	~(parent Doug ?y)
+# (grandparent ?x ?y)
+# (parent ?x ?y)
+# (parent ?x Sue)
+# ~(parent Doug ?y)
 
 where '?' denotes a variable and '~' denotes negation.
 
 Axiom example:
-	[(grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y)]
+# [(grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y)]
 
 which reads:
 If x is the grandparent of y then x is the parent of z and z is the parent of y.
 
 Moreover...
 Axioms are horn clauses. This means that the axiom shown above entails:
-
 (grandparent ?x ?y) => (parent ?x ?z) and (parent ?z ?y)
 
 which is equivalent to:
