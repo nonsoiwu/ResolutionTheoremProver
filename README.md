@@ -1,5 +1,5 @@
 # Resolution Theorem Prover
-* written in Python
+> written in Python
 
 # Author
 * Nonso Iwu
