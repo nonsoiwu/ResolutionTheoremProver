@@ -24,8 +24,7 @@ Axiom example:
 which reads:
 > If x is the grandparent of y then x is the parent of z and z is the parent of y.
 
-Moreover...\
-Axioms are horn clauses. This means that the axiom shown above entails:
+Moreover, Axioms are horn clauses. This means that the axiom shown above entails:
 > (grandparent ?x ?y) => (parent ?x ?z) and (parent ?z ?y)
 
 which is equivalent to:
