@@ -54,6 +54,7 @@ pred2 = Predicate().setAttributes("pred2", [pElem2])
 ```
 where ```pred1``` will read:
 > (pred1 ?name1 name2)
+
 and ```pred2``` will read:
 > (pred2 name2)
 
