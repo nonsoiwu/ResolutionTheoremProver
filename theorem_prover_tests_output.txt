@@ -1,0 +1,207 @@
+====================================================
+                   UNIFICATION TESTS
+====================================================
+unify(pr1, pr1, bindDict())
+pr1: (test ?x 3 ?x)
+pr1: (test ?x 3 ?x)
+Expected: 
+[]
+Actual: 
+[]
+
+unify(pr1, pr2, bindDict())
+pr1: (test ?x 3 ?x)
+pr2: (test 2 3 2)
+Expected: 
+x -> 2
+Actual: 
+?x -> 2
+
+unify(pr1, pr3, bindDict())
+pr1: (test ?x 3 ?x)
+pr3: (test 2 ?y 2)
+Expected: 
+x -> 2
+y -> 3
+Actual: 
+?x -> 2
+?y -> 3
+
+unify(pr1, pr4, bindDict())
+pr1: (test ?x 3 ?x)
+pr4: (test ?z ?y 2)
+Expected: 
+x -> z
+x -> 2
+y -> 3
+Actual: 
+?x -> ?z
+?x -> 2
+?y -> 3
+
+unify(pr5, pr4, bindDict())
+pr5: (test ?x 3 ?y)
+pr4: (test ?z ?y 2)
+Expected: 
+x -> z
+y -> 3
+y -> 2
+Actual: 
+?x -> ?z
+?y -> 3
+?y -> 2
+
+unify(pr5, pr6, bindDict())
+pr5: (test ?x 3 ?y)
+pr6: (test 2 ?z ?w)
+Expected: 
+x -> 2
+z -> 3
+y -> w
+Actual: 
+?x -> 2
+?z -> 3
+?y -> ?w
+
+unify(tpr5, tpr2, bindDict())
+tpr1: (test2 ?x ?x ?z)
+tpr2: (test2 ?z ?y 2)
+Expected: 
+x -> z
+x -> y
+z -> 2
+Actual: 
+?x -> ?z
+?x -> ?y
+?z -> 2
+
+====================================================
+                   BINDING TESTS
+====================================================
+
+bd1.add(pv1, pv2).add(pv1, pc1)
+Added:
+x -> y
+x -> 3
+Result:
+?x -> ?y
+?x -> 3
+Showing binds for 'x':
+3 ?y 
+
+bd2.add(pv1, pv2).add(pv1, pv3).add(pv1, pv4)
+Added:
+x -> y
+x -> z
+x -> w
+Result:
+?x -> ?y
+?x -> ?z
+?x -> ?w
+Showing binds for 'x':
+?y ?z ?w 
+
+bd3.add(pv1, pv2).add(pv3, pv4).add(pv1, pv4).add(pv4, pc1)
+Added:
+x -> y
+z -> w
+x -> w
+w -> 3
+Result:
+?x -> ?y
+?x -> ?w
+?z -> ?w
+?w -> 3
+Showing binds for 'x':
+?y 3 
+
+====================================================
+                   UNIQUIFY TESTS
+====================================================
+
+uniquify(ax1, bindDict())
+ax1: ((test ?x 3 ?x))
+uax1: ((test ?x.1 3 ?x.1))
+
+((test 2 3 2) ~(test ?z ?y 2))
+uniquify(ax2, bindDict())
+ax2: ((test 2 3 2) ~(test ?z ?y 2))
+uax2: ((test 2 3 2) ~(test ?z.1 ?y.1 2))
+
+uniquify(ax4, bindDict())
+ax4: ((test3 ~?w))
+uax3: ((test3 ~?w.1))
+
+====================================================
+                   THEOREM TESTS
+====================================================
+
+Premises:
+((grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y))
+((parent Brian Doug))
+((parent Doug Mary))
+((parent Mary Sue))
+
+Goals:
+(~(grandparent ?x ?y))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 6
+
+(~(grandparent ?x ?y)):
+1:{?x/Doug, ?y/Sue}
+2:{?x/Brian, ?y/Mary}
+
+Premises:
+((grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y))
+((parent Brian Doug))
+((parent Doug Mary))
+((parent Mary Sue))
+
+Goals:
+(~(grandparent ?x ?y))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 6
+
+(~(grandparent ?x ?y)):
+1:{?x/Brian, ?y/Mary}
+2:{?x/Doug, ?y/Sue}
+
+Premises:
+((grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y))
+((parent Brian Doug))
+((parent Doug Mary))
+((parent Mary Sue))
+
+Goals:
+(~(grandparent ?z Sue))
+
+Search Method: Depth First Search
+
+===Results===
+Iterations: 6
+
+(~(grandparent ?z Sue)):
+1:{?z/Doug}
+
+Premises:
+((grandparent ?x ?y) ~(parent ?x ?z) ~(parent ?z ?y))
+((parent Brian Doug))
+((parent Doug Mary))
+((parent Mary Sue))
+
+Goals:
+(~(grandparent ?z Sue))
+
+Search Method: Breadth First Search
+
+===Results===
+Iterations: 6
+
+(~(grandparent ?z Sue)):
+1:{?z/Doug}
